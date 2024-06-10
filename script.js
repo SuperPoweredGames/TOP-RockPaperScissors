@@ -28,11 +28,31 @@ function getHumanChoice()
 
 function playRound(humanChoice, computerChoice)
 {
+    console.log("Player chose: " + humanChoice);
+    console.log("Computer chose: " + computerChoice);
+    
+    if(humanChoice===computerChoice) {
+        return console.log("Draw! No one wins");
+    }
 
+    if(humanChoice === 'Rock' && computerChoice === 'Scissors' ||
+        humanChoice === 'Paper' && computerChoice === 'Rock' ||
+        humanChoice === 'Scissors' && computerChoice === 'Paper') {
+
+            console.log("You win! " + humanChoice + " beats " + computerChoice);
+            humanScore++;
+    } else {
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore++;
+    }
+    
+    console.log("SCORES:\nHuman: " + humanScore + "\nComputer: " + computerScore);
 }
 
 const humanSelection = getHumanChoice();
-//const computerSelection = getComputerChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
 
 function getComputerChoice()
 {
