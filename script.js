@@ -5,32 +5,31 @@ let humanScore = 0;
 let computerScore = 0;
 let round = 1;
 
-let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice();
 
-playGame();
+const rock = document.querySelector("#Rock");
+const paper = document.querySelector("#Paper");
+const scissors = document.querySelector("#Scissors");
+const roundNumber = document.querySelector("#round");
 
-function getHumanChoice()
-{
-    let choice = null;
-    
-    do{
-        choice = prompt("Please enter 'Rock', 'Paper', or 'Scissors'.");
-        
-        if (choice.toLowerCase() === "rock") {
-            choice = "Rock";
-        } else if (choice.toLowerCase() === "scissors") {
-            choice = "Scissors";
-        } else if (choice.toLowerCase() === "paper") {
-            choice = "Paper";
-        } else {
-            choice = null;
-        }
-    }
-    while (choice === null);
-    
-    return choice;
-}
+rock.addEventListener("click", function(event) {
+    console.log(rock.id + " was clicked")
+    playRound(rock.id,getComputerChoice())
+});
+paper.addEventListener("click", function(event) {
+    console.log(paper.id + " was clicked")
+    playRound(paper.id,getComputerChoice())
+});
+scissors.addEventListener("click", function(event) {
+    console.log(scissors.id + " was clicked")
+    playRound(scissors.id,getComputerChoice())
+});
+
+
+//roundNumber.textContent=round;
+//roundNumber.append(roundNumber);
+
+//playGame();
 
 function getComputerChoice(){
     let choice = Math.random(0,1);
@@ -75,15 +74,15 @@ function playRound(humanChoice, computerChoice)
 }
 
 function playGame() {
-    do {
+    //do {
         playRound(humanSelection, computerSelection);
         round++;
-        
+    /*    
         if(round < 6){
             resetChoices();
         }
     }
-    while (round < 6);
+    while (round < 6);*/
     
     if(humanScore < computerScore) { 
         console.log("Game Over: You lose!");
